@@ -16,3 +16,4 @@ que tracionam as rodas num sentido ou no outro. Quando uma roda gira para um lad
 Este é o princípio de movimento para a esquerda e para a direita. Quando as duas rodas giram na mesma direção, HIGH ou 1, o robô anda para frente. 
 A função trás é importante para o robô poder voltar e dobrar à esquerda ou à direita quando se deparar com um obstáculo.
 
+![image](https://user-images.githubusercontent.com/90293389/198027033-c66c815a-33c4-4f1d-93e1-4b2b6ed56ab3.png)

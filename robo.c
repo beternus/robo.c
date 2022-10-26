@@ -56,6 +56,15 @@ void direita()
  delay(200);
 }
 
+void tras()
+{
+ digitalWrite(IN1, LOW);
+ digitalWrite(IN2, HIGH);
+ digitalWrite(IN3, LOW);
+ digitalWrite(IN4, HIGH);
+ delay (200);
+}
+
 void parar()
 {
  digitalWrite(IN1, HIGH);
@@ -68,7 +77,7 @@ void parar()
 // so a preparacao
 void loop()
 {
-  frente();
+  tras();
   delay(1000);
 //  esquerda();
 //  delay(1000);

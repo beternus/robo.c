@@ -110,5 +110,9 @@ void loop()
     parar();
     Serial.println("parar"); 
   }
+  if (U == 1)
+  {
+    parar();
+  }
   delay(100);
 }

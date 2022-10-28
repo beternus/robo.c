@@ -92,47 +92,30 @@ void parar()
 // so a preparacao
 void loop()
 {
-  delay(50);
+  D = digitalRead(SensorD);   // lê o pino de entrada
+  E = digitalRead(SensorE);
+
   Serial.print("Ping: ");
 //  Serial.print(sonar.ping_cs());
   Serial.println("cm");
-  frente();
-  if (U==1){
-    parar();
-  }
-  delay(1000);
 
-  do{
-
-  if((D == 1) && (E == 1))
- {
-    frente();
-     Serial.println("frente"); 
-  }
-  
-  else if ((D == 1)&&(E == 0))
+   if ((D == 1)&&(E == 0))
   {
     esquerda();
     Serial.println("esquerda"); 
 
   }
-  else if ((D == 0)&&(E == 1))
+   if ((D == 0)&&(E == 1))
   {
     direita();
     Serial.println("direita"); 
   }
   
-  else if ((D == 1)&&(E == 1))
+  if ((D == 1)&&(E == 1))
   {
     parar();
     Serial.println("parar"); 
   }
-  }while (U==0);
-    if (U==1)
-  {
-    parar();
-    U=0;
-    delay(20);
-  }
+
   delay(100);
 }

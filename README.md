@@ -5,7 +5,7 @@ Foram declaradas as entradas do arduino, dentre elas seis entradas digitais. O c
 Dentro destas funções, existem ativações das saías, IN1,IN2, IN3,IN4.
 Elas enviam sinais digitais de 1 ou 0 (0 ou 5V) para a placa da ponte H
 
-![image](https://user-images.githubusercontent.com/90293389/198030272-ea027de5-800e-47a5-9455-fed582887c5f.png)
+![image](https://user-images.githubusercontent.com/90293389/198030272-ea027de5-800e-47a5-9455-fed582887c5f.png) [scale=0.8]
 
 A placa da ponte H, com um transistor de potência L298N, recebe esses sinais e envia para os motores,
 que tracionam as rodas num sentido ou no outro. Quando uma roda gira para um lado e a outra gira para outro, ela se movimenta na lateral.

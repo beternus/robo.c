@@ -4,9 +4,10 @@ int IN3 = 8;
 int IN4 = 7;
 int SensorD = 10;        // sensor de linha da direita
 int SensorE = 11;       // sensor de linha da esquerda
+int SensorL = 6;  //define sensor lateral
 int E = 2;
 int D = 3;
-int U = 12;
+int U = 13;
 
 //Carrega a biblioteca do sensor ultrassonico
 //#include Ultrasonic ultrasonic(pino_trigger, pino_echo);
@@ -15,7 +16,7 @@ int U = 12;
 //Define os pinos para o trigger e echo
 #define TRIGGER_PIN 12
 #define ECHO_PIN 13
-#define MAX_DISTANCE 30
+#define MAX_DISTANCE 150
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
@@ -96,6 +97,9 @@ void loop()
 //  Serial.print(sonar.ping_cs());
   Serial.println("cm");
   frente();
+  if (U==1){
+    parar();
+  }
   delay(1000);
 
   do{

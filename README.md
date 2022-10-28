@@ -14,3 +14,4 @@ A função trás é importante para o robô poder voltar e dobrar à esquerda ou
 Na parte do Ultrassom, é necessário incluir a biblioteca NewPing.h dentro do próprio Arduino. Foi incluído também um sensor lateral. Está sendo ajustada a lógica para o carrinho ser guiado pelos sensores corretamente...
 
 
+

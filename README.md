@@ -13,5 +13,11 @@ Este é o princípio de movimento para a esquerda e para a direita. Quando as du
 A função trás é importante para o robô poder voltar e dobrar à esquerda ou à direita quando se deparar com um obstáculo.
 Na parte do Ultrassom, é necessário incluir a biblioteca NewPing.h dentro do próprio Arduino. Foi incluído também um sensor lateral. Está sendo ajustada a lógica para o carrinho ser guiado pelos sensores corretamente...
 
-
-
+O robo deve contar na lateral as passagens na linha. ex: ele pode contar duas e depois virar para o lado.
+para isso, criar uma variavel do sensor lateral e contar. 
+a contagem do robo 14 deve ser: G7, segundo o prof. Jean.
+ele sai do G e chega no 7. portanto ele conta 3 na lateral e aí vira à esquerda
+int L;
+for (a=0; a>3; a++){
+   ...
+}

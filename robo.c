@@ -4,94 +4,104 @@ int IN3 = 8;
 int IN4 = 7;
 int SensorD = 10;        // sensor de linha da direita
 int SensorE = 11;       // sensor de linha da esquerda
-int SensorL = 6;    //define sensor lateral
+int SensorL = 6;  //define sensor lateral
 int SensorF = 13;  //sensor da frente
+int E = 2;
+int D = 3; //REVISAR PABLO
+int F = 13;
+int L = 1;
 
-//Carrega a biblioteca do sensor ultrassonico
-//#include Ultrasonic ultrasonic(pino_trigger, pino_echo);
-
-//#include <NewPing.h>
-//Define os pinos para o trigger e echo
-//#define TRIGGER_PIN 12
-//#define ECHO_PIN 13
-//#define MAX_DISTANCE 150
-
-//NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+int contagemlateral;
 
 void setup(){
   Serial.begin(9600);
-  //PinMode define os pinos como saida ou entrada
+  
+  //Define os pinos como saida e entrada
  pinMode(IN1, OUTPUT);
  pinMode(IN2, OUTPUT);
  pinMode(IN3, OUTPUT);
  pinMode(IN4, OUTPUT);
+ 
+ pinMode(D, INPUT);
+ pinMode(E, INPUT);
  pinMode(SensorD, INPUT);
  pinMode(SensorE, INPUT);
  pinMode(SensorF, INPUT);
- pinMode(SensorL, INPUT);
 
 //inicia parado
- digitalWrite(IN1, LOW);  
+ digitalWrite(IN1, LOW);
  digitalWrite(IN2, LOW);
  digitalWrite(IN3, LOW);
  digitalWrite(IN4, LOW);
-// digitalWrite(SensorD, LOW);
-// digitalWrite(SensorE, LOW);
+ 
 }
 
 void frente()
 {
+  if (F == LOW)
+  {
  digitalWrite(IN1, HIGH);
  digitalWrite(IN2, LOW);
  digitalWrite(IN3, HIGH);
  digitalWrite(IN4, LOW);
  delay (200);
+  } 
 }
 
 void esquerda()
 {
+   if (F == LOW)
+  {
  digitalWrite(IN1, HIGH);
  digitalWrite(IN2, LOW);
  digitalWrite(IN3, LOW);
  digitalWrite(IN4, HIGH);
  delay(200);
+  }
 }
 
 void direita()
 {
+   if (F == LOW)
+  {
  digitalWrite(IN1, LOW);
  digitalWrite(IN2, HIGH);
  digitalWrite(IN3, HIGH);
  digitalWrite(IN4, LOW);
  delay(200);
+  }
 }
 
 void tras()
 {
+   if (F == LOW)
+  {
  digitalWrite(IN1, LOW);
  digitalWrite(IN2, HIGH);
  digitalWrite(IN3, LOW);
  digitalWrite(IN4, HIGH);
  delay (200);
+  }
 }
 
 void parar()
 {
- digitalWrite(IN1, LOW);
- digitalWrite(IN2, LOW);
- digitalWrite(IN3, LOW);
- digitalWrite(IN4, LOW);
+ digitalWrite(IN1, HIGH);
+ digitalWrite(IN2, HIGH);
+ digitalWrite(IN3, HIGH);
+ digitalWrite(IN4, HIGH);
  delay(200);
 }
 
 // so a preparacao
 void loop()
 {
- // digitalRead(SensorD);   // lê o pino de entrada
- // digitalRead(SensorE);
- // digitalRead(SensorF);   // lê o pino de entrada
-//  digitalRead(SensorL);   // lê o pino de entrada
-
+  delay(15);
+  D = digitalRead(SensorD);   // lê o pino de entrada
+  E = digitalRead(SensorE);
+  F = digitalRead(SensorF);
+  L = digitalRead(SensorL);
+  
   Serial.print("Direita: ");
   Serial.println( digitalRead(SensorD));
   Serial.print("Esquerda: ");
@@ -100,23 +110,42 @@ void loop()
   Serial.println( digitalRead(SensorF));
   Serial.print("Lateral: ");
   Serial.println( digitalRead(SensorL));
-/*
-   if ((SensorD == 1)&&(SensorE == 0))
-  {
-    esquerda();
-    Serial.println(D); 
 
+ if ((D == LOW )&&(E == LOW))
+  {
+    frente();    
+    Serial.println(D); 
   }
-   if ((SensorD == 0)&&(SensorE == 1))
+  
+   if ((D == LOW)&&(E == HIGH))
   {
     direita();
     Serial.println(D); 
   }
+   if ((D == HIGH)&&(E == LOW))
+  {
+    esquerda();
+    Serial.println("esquerda"); 
+
+  }
   
-  if ((D == 1)&&(E == 1))
+  if ((D == HIGH)&&(E == HIGH))
   {
     parar();
-    Serial.println(D); 
-  }*/
-  delay(250);
+    Serial.println("parar"); 
+  }
+
+  if (L == HIGH) 
+  {
+    contagemlateral = contagemlateral + 1;
+     if (contagemlateral>=3)
+      {
+        contagemlateral = 0;
+      }
+     if (contagemlateral==2)
+     {
+      esquerda();
+     }     
+  }
+  delay(100);
 }

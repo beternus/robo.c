@@ -7,33 +7,32 @@ int SensorE = 11;       // sensor de linha da esquerda
 int SensorL = 6;  //define sensor lateral
 int SensorF = 13;  //sensor da frente
 int E = 2;
-int D = 3;
-int U = 13;
+int D = 3; //REVISAR PABLO
+int F = 13;
 
+int contagemlateral;
 
 void setup(){
   Serial.begin(9600);
-
-  //Define os pinos como saida
+  
+  //Define os pinos como saida e entrada
  pinMode(IN1, OUTPUT);
  pinMode(IN2, OUTPUT);
  pinMode(IN3, OUTPUT);
  pinMode(IN4, OUTPUT);
+ 
  pinMode(D, INPUT);
  pinMode(E, INPUT);
  pinMode(SensorD, INPUT);
  pinMode(SensorE, INPUT);
  pinMode(SensorF, INPUT);
- pinMode(U, INPUT);
 
 //inicia parado
  digitalWrite(IN1, LOW);
  digitalWrite(IN2, LOW);
  digitalWrite(IN3, LOW);
  digitalWrite(IN4, LOW);
- digitalWrite(E, LOW);
- digitalWrite(D, LOW);
-
+ 
 }
 
 void frente()
@@ -84,16 +83,17 @@ void parar()
 // so a preparacao
 void loop()
 {
-  frente();
-  delay(1000);
-  esquerda();
-  delay(1000);
-  direita();
-  delay(1000);
-  tras();
-  delay(1000);
+//  frente();
+//  delay(1000);
+//  esquerda();
+//  delay(1000);
+//  direita();
+//  delay(1000);
+//  tras();
+//  delay(1000);
   D = digitalRead(SensorD);   // lê o pino de entrada
   E = digitalRead(SensorE);
+  F = digitalRead(SensorF);
 
   Serial.print("Direita: ");
   Serial.println( digitalRead(SensorD));
@@ -103,35 +103,41 @@ void loop()
   Serial.println( digitalRead(SensorF));
   Serial.print("Lateral: ");
   Serial.println( digitalRead(SensorL));
-
-   if ((SensorD == 0)&&(SensorE == 0))
+  
+   if ((D == 0)&&(E == 0))
   {
     frente();
     Serial.println(D); 
   }
-   if ((SensorD == 0)&&(SensorE == 1))
+   if ((D == 0)&&(E == 1))
   {
     direita();
     Serial.println(D); 
   }
-  
-   if ((SensorD == 1)&&(SensorE == 0))
+   if ((D == 1)&&(E == 0))
   {
     esquerda();
     Serial.println("esquerda"); 
 
   }
-   if ((SensorD == 0)&&(SensorE == 1))
-  {
-    direita();
-    Serial.println("direita"); 
-  }
   
-  if ((SensorD == 1)&&(SensorE == 1))
+  if ((D == 1)&&(E == 1))
   {
     parar();
     Serial.println("parar"); 
   }
 
+  if (L == 1) //avanços do dia 03/11
+  {
+    contagemlateral = contagemlateral + 1;
+     if (contagemlateral>=3)
+      {
+        contagemlateral = 0;
+      }
+     if (contagemlateral==2)
+     {
+      esquerda();
+     }     
+  }
   delay(100);
 }

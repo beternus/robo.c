@@ -45,7 +45,7 @@ void frente()
  digitalWrite(IN2, LOW);
  digitalWrite(IN3, HIGH);
  digitalWrite(IN4, LOW);
- delay (1000);
+ delay (30);
   } 
 }
 
@@ -58,7 +58,7 @@ Serial.println( digitalRead(SensorF));
  digitalWrite(IN2, LOW);
  digitalWrite(IN3, LOW);
  digitalWrite(IN4, HIGH);
- delay(1000);
+ delay(30);
   }
 }
 
@@ -71,7 +71,7 @@ void direita()
  digitalWrite(IN2, HIGH);
  digitalWrite(IN3, HIGH);
  digitalWrite(IN4, LOW);
- delay(1000);
+ delay(30);
   }
 }
 
@@ -83,7 +83,7 @@ void tras()
  digitalWrite(IN2, HIGH);
  digitalWrite(IN3, LOW);
  digitalWrite(IN4, HIGH);
- delay (1000);
+ delay (30);
   }
 }
 
@@ -93,7 +93,7 @@ void parar()
  digitalWrite(IN2, HIGH);
  digitalWrite(IN3, HIGH);
  digitalWrite(IN4, HIGH);
- delay(1000);
+ delay(30);
 }
 
 // so a preparacao
@@ -129,6 +129,5 @@ void loop()
   {
     esquerda();
     Serial.println("esquerda"); 
-
   }
 }

@@ -15,7 +15,7 @@ int L = 1;
 
 //int contagemlateral;
 int contador = 0;
-int flag = 0;
+int contadorL = 0;
 
 void setup(){
   Serial.begin(9600);
@@ -67,32 +67,16 @@ void direita()
  digitalWrite(IN4, LOW);
 }
 
-void tras()
-{
-//Serial.println( digitalRead(SensorF));
- digitalWrite(IN1, HIGH);
- digitalWrite(IN2, LOW);
- digitalWrite(IN3, LOW);
- digitalWrite(IN4, LOW);
-}
+
 
 // so a preparacao
 void loop()
 {
-  delay(15);
+  delay(200);
   D = digitalRead(SensorD);   // lê o pino de entrada
   E = digitalRead(SensorE);
-//F = digitalRead(SensorF);
   L = digitalRead(SensorL);
   
-  Serial.print("Direita: ");
-  Serial.println( digitalRead(SensorD));
-  Serial.print("Esquerda: ");
-  Serial.println( digitalRead(SensorE));
-  Serial.print("Frente: ");
-//  Serial.println( digitalRead(SensorF));
-  Serial.print("Lateral: ");
-  Serial.println( digitalRead(SensorL));
 
   if ((D == LOW )&&(E == LOW))
   {
@@ -100,12 +84,12 @@ void loop()
     Serial.println(" indo p frente"); 
   }
 
- else if ((D == LOW)&&(E == HIGH))
+ if ((D == LOW)&&(E == HIGH))
   {
     direita();
     Serial.println("indo p direita"); 
   }
- else if ((D == HIGH)&&(E == LOW))
+ if ((D == HIGH)&&(E == LOW))
   {
     esquerda();
     Serial.println("indo p esquerda"); 
@@ -113,44 +97,22 @@ void loop()
   else if ((D == HIGH)&&(E == HIGH))
   {
     contador++;
-    delay(400);
+    frente();
   }
   Serial.println(contador);
-
+  if(L == HIGH)
+  {
+    contadorL++;
+    frente();
+  }
 //ABAIXO MUDEI DE L PARA contador...
   if (contador == 3){  //NESSA PARTE AQUI O COLEGA ME AJUDOU A FAZER - CONSISTE EM UMA CONTAGEM DOS QUADRANTES PARA PODER GIRAR PARA A ESQUERDA
-    if ((D == HIGH)&&(E == HIGH))
+    while(contadorL <= 4)
     {
-      flag = 1;
+      esquerda();
+      contador = 4;
     }
-    if(flag == 1)
-    {
-      if ((D== HIGH)&&((contador == 0) || (contador == 2))) //so a roda da direita gira para frente
-      {
-        if(contador == 2)
-        {
-          contador = 3;
-        }
-        contador = 1;
-        delay(50);
-        digitalWrite(IN1, HIGH); //achar os comandos para girar a roda da direita
-        digitalWrite(IN2, LOW);
-      }
-      if ((D== LOW)&&((contador == 1)||(contador==3))) //so a roda da direita gira para frente
-      {
-        contador = 2;
-        if(contador == 3)
-        {
-          contador=0;
-          flag = 0;
-        }
-        delay(50);
-        digitalWrite(IN1, HIGH); //achar os comandos para girar a roda da direita
-        digitalWrite(IN2, LOW);
-      }
-    }    
   }
-    else {
-    frente();
-    }
+  
+    
 }

@@ -26,7 +26,7 @@ void setup(){
  
  pinMode(SensorD, INPUT);
  pinMode(SensorE, INPUT);
- pinMode(SensorL, INPUT);
+ //pinMode(SensorL, INPUT);
 
 //inicia parado
  parar();

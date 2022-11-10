@@ -7,8 +7,7 @@ int SensorD = 10;        // sensor de linha da direita
 int SensorE = 11;       // sensor de linha da esquerda
 
 bool E = 2;
-bool D = 3; //REVISAR PABLO
-int ledplaca = 13;
+bool D = 3;
 
 int contador = 3;
 bool dobrou = false;
@@ -24,7 +23,6 @@ void setup(){
  
  pinMode(SensorD, INPUT);
  pinMode(SensorE, INPUT);
- //pinMode(SensorL, INPUT);
 
 //inicia parado
  parar();
@@ -76,27 +74,27 @@ void loop()
 
  else if ((D == LOW)&&(E == HIGH))
   {
-    esquerda();
+    direita();
     Serial.println("indo p direita"); 
   }
  else if ((D == HIGH)&&(E == LOW))
   {
-    direita(); 
+    esquerda(); 
     Serial.println("indo p esquerda"); 
   }
   else if ((D == HIGH)&&(E == HIGH))
   {
     Serial.println("cruzamento");
     frente();
-    delay(300); // delay para cruzar a linha
+    delay(310); // delay para cruzar a linha
     if (--contador == 0) // se chegou num ponto de dobrar/terminar
     {  
       Serial.println(contador);
       if (!dobrou)
       {
         Serial.println("dobrando p esquerda");
-        esquerda();
-        delay(800); // delay para fazer a curva
+        direita();
+        delay(820); // delay para fazer a curva
         dobrou = true;
         contador = 1; // numero de linhas pra cruzar depois de fazer a curva
         frente();
@@ -105,7 +103,7 @@ void loop()
       {
         Serial.println("chegou nou fim");
         frente();
-        delay(300); // tempo para ir até o final
+        delay(310); // tempo para ir até o final
         parar();
         while(1) // fica parado para sempre
         {     

@@ -6,8 +6,8 @@ int IN4 = 7;
 int SensorD = 10;        // sensor de linha da direita
 int SensorE = 11;       // sensor de linha da esquerda
 
-int E = 2;
-int D = 3; //REVISAR PABLO
+bool E = 2;
+bool D = 3; //REVISAR PABLO
 int ledplaca = 13;
 
 int contador = 3;
@@ -21,8 +21,6 @@ void setup(){
  pinMode(IN2, OUTPUT);
  pinMode(IN3, OUTPUT);
  pinMode(IN4, OUTPUT);
- pinMode(D, INPUT);
- pinMode(E, INPUT);
  
  pinMode(SensorD, INPUT);
  pinMode(SensorE, INPUT);
@@ -83,7 +81,7 @@ void loop()
   }
  else if ((D == HIGH)&&(E == LOW))
   {
-    direita();
+    direita(); 
     Serial.println("indo p esquerda"); 
   }
   else if ((D == HIGH)&&(E == HIGH))
@@ -110,8 +108,7 @@ void loop()
         delay(300); // tempo para ir até o final
         parar();
         while(1) // fica parado para sempre
-        {
-          
+        {     
         }
       }
     }    

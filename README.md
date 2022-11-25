@@ -21,4 +21,5 @@ int L;
 for (a=0; a>3; a++){
    ...
 }
- //COLOCAR UM CONTROLE PARA DEPOIS QUE LEU A PRIMEIRA VEZ, SOMENTE LER A SEGUNDA VEZ DEPOIS DE TERMINAR A FITA. POIS ELE VAI LER MUITAS VEZES A FITA.
+
+O trabalho foi convertido em um texto para Congresso Acadêmico

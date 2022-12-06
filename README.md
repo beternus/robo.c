@@ -1,4 +1,3 @@
-# robo.c
 Robô Seguidor de Linha com Arduino
 
 O arquivo correto é o robofinal. Os demais são arquivos auxiliares.

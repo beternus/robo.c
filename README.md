@@ -1,6 +1,6 @@
 Robô Seguidor de Linha com Arduino
 
-O arquivo correto é o robofinal. Os demais são arquivos auxiliares.
+O arquivo correto é o robofinal. Os demais são arquivos auxiliares. Este arquivo pode ser compilado para o Arduino, seguida de posterior montagem do robô.
 
 Este código em C serve para controlar um robô, nele, as variáveis estão declaradas (usamos variáveis inteiras). Existe um setup das variáveis
 Foram declaradas as entradas do arduino, dentre elas seis entradas digitais. O código possui, antes do void loop (uma espécie de int main) as funções para movimentação do robô. Estas funções são: frente(), esquerda(), direita(), tras(), parar().
